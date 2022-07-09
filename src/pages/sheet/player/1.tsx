@@ -19,10 +19,10 @@ import PlayerSpellContainer from '../../../components/Player/PlayerSpellContaine
 import { ErrorLogger, Socket } from '../../../contexts';
 import useSocket from '../../../hooks/useSocket';
 import useToast from '../../../hooks/useToast';
-import type { InferSSRProps } from '../../../utils';
 import api from '../../../utils/api';
 import type { DiceConfig } from '../../../utils/config';
 import prisma from '../../../utils/database';
+import type { InferSSRProps } from '../../../utils/next';
 import { sessionSSR } from '../../../utils/session';
 
 type PageProps = InferSSRProps<typeof getSSP>;

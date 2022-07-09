@@ -14,7 +14,7 @@ import useDiceRoll from '../../hooks/useDiceRoll';
 import useExtendedState from '../../hooks/useExtendedState';
 import api from '../../utils/api';
 import { resolveDices } from '../../utils/dice';
-import {
+import type {
 	EquipmentAddEvent,
 	EquipmentChangeEvent,
 	EquipmentRemoveEvent,

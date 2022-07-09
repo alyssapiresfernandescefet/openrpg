@@ -13,7 +13,7 @@ import ApplicationHead from '../components/ApplicationHead';
 import ErrorToastContainer from '../components/ErrorToastContainer';
 import useToast from '../hooks/useToast';
 import styles from '../styles/modules/Home.module.scss';
-import type { InferSSRProps } from '../utils';
+import type { InferSSRProps } from '../utils/next';
 import api from '../utils/api';
 import prisma from '../utils/database';
 import { sessionSSR } from '../utils/session';

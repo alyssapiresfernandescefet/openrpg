@@ -13,7 +13,7 @@ import PlayerAnnotationsField from '../../components/Player/PlayerAnnotationFiel
 import { ErrorLogger, Socket } from '../../contexts';
 import useSocket from '../../hooks/useSocket';
 import useToast from '../../hooks/useToast';
-import type { InferSSRProps } from '../../utils';
+import type { InferSSRProps } from '../../utils/next';
 import type { DiceConfig, Environment } from '../../utils/config';
 import prisma from '../../utils/database';
 import { sessionSSR } from '../../utils/session';

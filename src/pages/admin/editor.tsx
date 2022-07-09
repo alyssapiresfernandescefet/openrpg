@@ -15,7 +15,7 @@ import ApplicationHead from '../../components/ApplicationHead';
 import ErrorToastContainer from '../../components/ErrorToastContainer';
 import { ErrorLogger } from '../../contexts';
 import useToast from '../../hooks/useToast';
-import type { InferSSRProps } from '../../utils';
+import type { InferSSRProps } from '../../utils/next';
 import prisma from '../../utils/database';
 import { sessionSSR } from '../../utils/session';
 

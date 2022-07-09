@@ -7,7 +7,7 @@ import Fade from 'react-bootstrap/Fade';
 import Spinner from 'react-bootstrap/Spinner';
 import { clamp } from '../../utils';
 import SheetModal from './SheetModal';
-import { DiceRequest, DiceResolverKey, DiceResponse } from '../../utils/dice';
+import type { DiceRequest, DiceResolverKey, DiceResponse } from '../../utils/dice';
 import api from '../../utils/api';
 import { ErrorLogger } from '../../contexts';
 

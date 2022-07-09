@@ -14,9 +14,9 @@ import PlayerAnnotationsField from '../../../../components/Player/PlayerAnnotati
 import PlayerExtraInfoField from '../../../../components/Player/PlayerExtraInfoField';
 import useSocket from '../../../../hooks/useSocket';
 import useToast from '../../../../hooks/useToast';
-import type { InferSSRProps } from '../../../../utils';
 import api from '../../../../utils/api';
 import prisma from '../../../../utils/database';
+import type { InferSSRProps } from '../../../../utils/next';
 import { sessionSSR } from '../../../../utils/session';
 
 type PageProps = InferSSRProps<typeof getSSP>;

@@ -1,4 +1,4 @@
-import { InferGetServerSidePropsType } from 'next';
+import type { InferGetServerSidePropsType } from 'next';
 import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';

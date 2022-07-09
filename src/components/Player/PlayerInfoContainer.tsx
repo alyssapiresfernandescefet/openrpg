@@ -1,4 +1,4 @@
-import { Info } from '@prisma/client';
+import type { Info } from '@prisma/client';
 import { MouseEvent, useContext, useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';

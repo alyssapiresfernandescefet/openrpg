@@ -19,7 +19,7 @@ import PlayerSpellContainer from '../../../../components/Player/PlayerSpellConta
 import { ErrorLogger, Socket } from '../../../../contexts';
 import useSocket from '../../../../hooks/useSocket';
 import useToast from '../../../../hooks/useToast';
-import type { InferSSRProps } from '../../../../utils';
+import type { InferSSRProps } from '../../../../utils/next';
 import api from '../../../../utils/api';
 import type { DiceConfig } from '../../../../utils/config';
 import prisma from '../../../../utils/database';

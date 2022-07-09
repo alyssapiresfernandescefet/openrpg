@@ -1,6 +1,5 @@
 import type { Attribute } from '@prisma/client';
-import { ChangeEventHandler } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEventHandler } from 'react';
 import Container from 'react-bootstrap/Container';
 import FormCheck from 'react-bootstrap/FormCheck';
 import FormControl from 'react-bootstrap/FormControl';

@@ -18,7 +18,7 @@ import BottomTextInput from '../../components/BottomTextInput';
 import DataContainer from '../../components/DataContainer';
 import ErrorToastContainer from '../../components/ErrorToastContainer';
 import useToast from '../../hooks/useToast';
-import type { InferSSRProps } from '../../utils';
+import type { InferSSRProps } from '../../utils/next';
 import api from '../../utils/api';
 import type { DiceConfig, PortraitFontConfig } from '../../utils/config';
 import prisma from '../../utils/database';
