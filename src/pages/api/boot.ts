@@ -1,22 +1,29 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import _presets from '../../utils/presets.json';
+import type { NextApiHandler } from 'next';
 import prisma from '../../utils/database';
+import type { NextApiResponseData } from '../../utils/next';
 import type { Presets } from '../../utils/presets';
+import _presets from '../../utils/presets.json';
+
+export type BootResponse = NextApiResponseData<'already_booted' | 'invalid_preset_id'>;
 
 const presets = _presets as Presets;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	if (req.method !== 'POST') return res.status(404).end();
+const handler: NextApiHandler<BootResponse> = async (req, res) => {
+	if (req.method !== 'POST') {
+		res.status(405).end();
+		return;
+	}
 
 	const config = await prisma.config.findUnique({ where: { name: 'init' } });
 
-	if (config && config.value === 'true') return res.status(400).end();
+	if (config && config.value === 'true')
+		return res.json({ status: 'failure', reason: 'already_booted' });
 
 	const presetId = req.body.presetId || presets[0].preset_id;
 
 	const preset = presets.find((p) => p.preset_id === presetId);
 
-	if (!preset) return res.status(400).end();
+	if (!preset) return res.json({ status: 'failure', reason: 'invalid_preset_id' });
 
 	await prisma.$transaction([
 		prisma.config.createMany({ data: getDefaultConfig() }),
@@ -38,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	]);
 
 	res.end();
-}
+};
 
 function getDefaultConfig() {
 	return [
@@ -87,3 +94,5 @@ function getDefaultConfig() {
 		},
 	];
 }
+
+export default handler;

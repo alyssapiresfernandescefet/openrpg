@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import api from '../../utils/api';
 import _presets from '../../utils/presets.json';
+import type { BootResponse } from '../../pages/api/boot';
 
 const presets = _presets.map((p) => ({ id: p.preset_id, name: p.preset_name }));
 
@@ -15,18 +16,32 @@ type Preset = typeof presets[number];
 
 export default function WelcomePage() {
 	const [booting, setBooting] = useState(false);
-	const [error, setError] = useState(false);
+	const [error, setError] = useState<string>();
 	const [selectedPreset, setSelectedPreset] = useState(presets[0]);
 
 	function boot() {
 		setBooting(true);
 		api
-			.post('/boot', { presetId: selectedPreset.id })
-			.then(() => Router.reload())
-			.catch((err) => {
-				console.error(err);
-				setError(true);
-			});
+			.post<BootResponse>('/boot', { presetId: selectedPreset.id })
+			.then(({ data }) => {
+				if (data.status === 'success') {
+					Router.reload();
+					return;
+				}
+
+				switch (data.reason) {
+					case 'already_booted':
+						return setError(
+							'Não foi possível aplicar as configurações iniciais.' +
+								' Tente recarregar a página'
+						);
+					case 'invalid_preset_id':
+						return setError('A predefinição selecionada não existe.');
+					default:
+						break;
+				}
+			})
+			.catch(console.error);
 	}
 
 	if (error)
@@ -46,6 +61,9 @@ export default function WelcomePage() {
 						</a>
 						.
 					</Col>
+				</Row>
+				<Row>
+					<Col className='h4 mt-3'>Motivo: {error}</Col>
 				</Row>
 			</Container>
 		);
