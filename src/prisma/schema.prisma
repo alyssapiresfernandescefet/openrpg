@@ -28,12 +28,12 @@ model Player {
   PlayerEquipment       PlayerEquipment[]
   PlayerItem            PlayerItem[]
   PlayerExtraInfo       PlayerExtraInfo[]
-  PlayerNote            PlayerNote[]
+  PlayerNote            PlayerNote?
   PlayerSpell           PlayerSpell[]
   PlayerCurrency        PlayerCurrency[]
   PlayerAvatar          PlayerAvatar[]
-  SenderTrades          Trade[]                 @relation(name: "Sender")
-  ReceiverTrades        Trade[]                 @relation(name: "Receiver")
+  SenderTrades          Trade?                  @relation(name: "Sender")
+  ReceiverTrades        Trade?                  @relation(name: "Receiver")
 }
 
 model Info {
@@ -261,7 +261,7 @@ model PlayerSpell {
 }
 
 model PlayerNote {
-  Player    Player @relation(fields: [player_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Player    Player @relation(fields: [player_id], references: [id])
   player_id Int
   value     String @db.Text
 
@@ -279,20 +279,20 @@ model PlayerAvatar {
   @@unique([player_id, attribute_status_id])
 }
 
+model Trade {
+  id                 Int    @id @default(autoincrement())
+  Sender             Player @relation(name: "Sender", fields: [sender_id], references: [id])
+  sender_id          Int    @unique
+  sender_object_id   Int
+  Receiver           Player @relation(name: "Receiver", fields: [receiver_id], references: [id])
+  receiver_id        Int    @unique
+  receiver_object_id Int?
+}
+
 model Config {
   id    Int    @id @default(autoincrement())
   name  String @unique
   value String @db.LongText
-}
-
-model Trade {
-  id                 Int    @id @default(autoincrement())
-  Sender             Player @relation(name: "Sender", fields: [sender_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sender_id          Int
-  sender_object_id   Int
-  Receiver           Player @relation(name: "Receiver", fields: [receiver_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  receiver_id        Int
-  receiver_object_id Int?
 }
 
 enum Role {

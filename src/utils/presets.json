@@ -1,0 +1,849 @@
+[
+	{
+		"preset_name": "Nenhum",
+		"preset_id": "none",
+		"attribute": [],
+		"attribute_status": [],
+		"characteristic": [],
+		"currency": [],
+		"equipment": [],
+		"extraInfo": [],
+		"info": [],
+		"item": [],
+		"skill": [],
+		"spec": [],
+		"specialization": [],
+		"spell": []
+	},
+	{
+		"preset_name": "Call of Cthulhu 7th Edition",
+		"preset_id": "coc7",
+		"attribute": [
+			{
+				"id": 1,
+				"name": "Vida",
+				"color": "b62323",
+				"rollable": false
+			},
+			{
+				"id": 2,
+				"name": "Sanidade",
+				"color": "1f3ce0",
+				"rollable": true
+			},
+			{
+				"id": 3,
+				"name": "Magia",
+				"color": "ae00ff",
+				"rollable": false
+			}
+		],
+		"attribute_status": [
+			{
+				"name": "Inconsciente",
+				"attribute_id": 1
+			},
+			{
+				"name": "Ferimento Grave",
+				"attribute_id": 1
+			},
+			{
+				"name": "Traumatizado",
+				"attribute_id": 3
+			},
+			{
+				"name": "Enlouquecido",
+				"attribute_id": 3
+			}
+		],
+		"characteristic": [
+			{ "name": "Força" },
+			{ "name": "Destreza" },
+			{ "name": "Inteligência" },
+			{ "name": "Constituição" },
+			{ "name": "Aparência" },
+			{ "name": "Poder" },
+			{ "name": "Tamanho" },
+			{ "name": "Educação" }
+		],
+		"currency": [{ "name": "Nível de Gasto Diário" }, { "name": "Dinheiro" }],
+		"equipment": [
+			{
+				"name": "Desarmado",
+				"type": "Comum",
+				"damage": "1d3+DB",
+				"range": "Toque",
+				"attacks": "1",
+				"ammo": null,
+				"visible": true
+			}
+		],
+		"extraInfo": [
+			{ "name": "Descrição Pessoal" },
+			{ "name": "Ideologia & Crenças" },
+			{ "name": "Pessoas & Lugares Significativos" },
+			{ "name": "Patrimônio & Bens Preciosos" },
+			{ "name": "Características" },
+			{ "name": "Lesões/Cicatrizes" },
+			{ "name": "Fobias & Manias" },
+			{ "name": "Encontros com Criaturas" }
+		],
+		"info": [
+			{
+				"name": "Player"
+			},
+			{
+				"name": "Ocupação"
+			},
+			{
+				"name": "Idade"
+			},
+			{
+				"name": "Gênero"
+			},
+			{
+				"name": "Residência"
+			},
+			{
+				"name": "Local de Nascimento"
+			},
+			{
+				"name": "Peso"
+			},
+			{
+				"name": "Altura"
+			}
+		],
+		"item": [],
+		"skill": [
+			{
+				"name": "Antropologia",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Arcos",
+				"specialization_id": 1,
+				"mandatory": false,
+				"startValue": 15
+			},
+			{
+				"name": "Armas Pesadas",
+				"specialization_id": 1,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Lança-Chamas",
+				"specialization_id": 1,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Metralhadoras",
+				"specialization_id": 1,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Pistolas",
+				"specialization_id": 1,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Rifles/Espingardas",
+				"specialization_id": 1,
+				"mandatory": true,
+				"startValue": 25
+			},
+			{
+				"name": "Submetralhadoras",
+				"specialization_id": 1,
+				"mandatory": false,
+				"startValue": 15
+			},
+			{
+				"name": "Arqueologia",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Arremessar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Atuação",
+				"specialization_id": 2,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Belas Artes",
+				"specialization_id": 2,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Criptografia",
+				"specialization_id": 2,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Falsificação",
+				"specialization_id": 2,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Fotografia",
+				"specialization_id": 2,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Artilharia",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Avaliação",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Cavalgar",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Charme",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 15
+			},
+			{
+				"name": "Chaveiro",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Astronomia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Biologia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Botânica",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Ciência Forense",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Engenharia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Farmácia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Física",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Geologia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Matemática",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Meteorologia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Química",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Zoologia",
+				"specialization_id": 3,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Consertos Elétricos",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Consertos Mecânicos",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Contabilidade",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Demolições",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Direito",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Dirigir Automóveis",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Disfarce",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 5
+			},
+			{
+				"name": "Eletrônica",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Encontrar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 25
+			},
+			{
+				"name": "Escalar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Escutar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Esquivar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Furtividade",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Hipnose",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "História",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Intimidação",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 15
+			},
+			{
+				"name": "Lábia",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 5
+			},
+			{
+				"name": "Leitura Labial",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Nativa",
+				"specialization_id": 4,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Briga",
+				"specialization_id": 5,
+				"mandatory": true,
+				"startValue": 25
+			},
+			{
+				"name": "Chicotes",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Espadas",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 20
+			},
+			{
+				"name": "Garrote",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 15
+			},
+			{
+				"name": "Lanças",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 20
+			},
+			{
+				"name": "Machados",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 15
+			},
+			{
+				"name": "Manguais",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Motosserras",
+				"specialization_id": 5,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Medicina",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 1
+			},
+			{
+				"name": "Mergulho",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Mundo Natural",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Natação",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Navegação",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Nível de Crédito",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Ocultismo",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 5
+			},
+			{
+				"name": "Operar Maquinário Pesado",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Persuasão",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 10
+			},
+			{
+				"name": "Aeronave",
+				"specialization_id": 6,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Barco",
+				"specialization_id": 6,
+				"mandatory": false,
+				"startValue": 1
+			},
+			{
+				"name": "Prestidigitação",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 10
+			},
+			{
+				"name": "Primeiros Socorros",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 30
+			},
+			{
+				"name": "Psicanálise",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 1
+			},
+			{
+				"name": "Psicologia",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 10
+			},
+			{
+				"name": "Rastrear",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 10
+			},
+			{
+				"name": "Saltar",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Treinar Animais",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			},
+			{
+				"name": "Usar Bibliotecas",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 20
+			},
+			{
+				"name": "Usar Computadores",
+				"specialization_id": null,
+				"mandatory": false,
+				"startValue": 5
+			}
+		],
+		"spec": [
+			{ "name": "Cthulhu Mythos" },
+			{ "name": "Dano Bônus" },
+			{ "name": "Corpo" },
+			{ "name": "Taxa de Movimento" }
+		],
+		"specialization": [
+			{
+				"id": 1,
+				"name": "Armas de Fogo"
+			},
+			{
+				"id": 2,
+				"name": "Arte e Ofício"
+			},
+			{
+				"id": 3,
+				"name": "Ciência"
+			},
+			{
+				"id": 4,
+				"name": "Língua"
+			},
+			{
+				"id": 5,
+				"name": "Lutar"
+			},
+			{
+				"id": 6,
+				"name": "Pilotar"
+			},
+			{
+				"id": 7,
+				"name": "Sobrevivência"
+			}
+		],
+		"spell": []
+	},
+	{
+		"preset_name": "Dungeons & Dragons (D&D) 5th Edition",
+		"preset_id": "dnd5",
+		"attribute": [
+			{
+				"id": 1,
+				"name": "Vida",
+				"color": "b62323",
+				"rollable": false
+			},
+			{
+				"id": 2,
+				"name": "Sanidade",
+				"color": "1f3ce0",
+				"rollable": true
+			},
+			{
+				"id": 3,
+				"name": "Magia",
+				"color": "ae00ff",
+				"rollable": false
+			}
+		],
+		"attribute_status": [
+			{
+				"name": "Inconsciente",
+				"attribute_id": 1
+			},
+			{
+				"name": "Ferimento Grave",
+				"attribute_id": 1
+			},
+			{
+				"name": "Traumatizado",
+				"attribute_id": 3
+			},
+			{
+				"name": "Enlouquecido",
+				"attribute_id": 3
+			}
+		],
+		"characteristic": [
+			{ "name": "Força" },
+			{ "name": "Destreza" },
+			{ "name": "Constituição" },
+			{ "name": "Inteligência" },
+			{ "name": "Sabedoria" },
+			{ "name": "Carisma" }
+		],
+		"currency": [
+			{ "name": "Peças de Cobre" },
+			{ "name": "Peças de Prata" },
+			{ "name": "Peças de Electrum" },
+			{ "name": "Peças de Ouro" },
+			{ "name": "Peças de Platina" }
+		],
+		"equipment": [],
+		"extraInfo": [
+			{ "name": "Descrição Pessoal" },
+			{ "name": "Traços de Personalidade" },
+			{ "name": "Ideais" },
+			{ "name": "Ligações" },
+			{ "name": "Defeitos" }
+		],
+		"info": [
+			{
+				"name": "Player"
+			},
+			{
+				"name": "Classe e Nível"
+			},
+			{
+				"name": "Antecedente"
+			},
+			{
+				"name": "Raça"
+			},
+			{
+				"name": "Tendência"
+			},
+			{
+				"name": "Pontos de EXP"
+			},
+			{
+				"name": "Idade"
+			},
+			{
+				"name": "Peso"
+			},
+			{
+				"name": "Altura"
+			},
+			{
+				"name": "Olhos"
+			},
+			{
+				"name": "Pele"
+			},
+			{
+				"name": "Cabelo"
+			}
+		],
+		"item": [],
+		"skill": [
+			{
+				"name": "Acrobacia (Des)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Arcanismo (Int)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Atletismo (For)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Atuação (Car)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Blefar (Car)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Furtividade (Des)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "História (Int)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Intimidação (Car)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Intuição (Sab)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Investigação (Int)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Lidar com Animais (Sab)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Medicina (Sab)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Natureza (Int)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Percepção (Sab)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Persuasão (Car)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Prestidigitação (Des)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Religião (Int)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			},
+			{
+				"name": "Sobrevivência (Sab)",
+				"specialization_id": null,
+				"mandatory": true,
+				"startValue": 0
+			}
+		],
+		"spec": [{ "name": "Classe de Armadura" }],
+		"specialization": [],
+		"spell": []
+	}
+]

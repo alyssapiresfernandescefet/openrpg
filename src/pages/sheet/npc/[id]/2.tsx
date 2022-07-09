@@ -62,7 +62,7 @@ function PlayerSheet(props: PageProps) {
 				<Row>
 					<DataContainer title='Anotações' htmlFor='playerAnnotations' outline>
 						<PlayerAnnotationsField
-							value={props.player.PlayerNote[0].value}
+							value={props.player.PlayerNote?.value}
 							npcId={props.player.id}
 						/>
 					</DataContainer>

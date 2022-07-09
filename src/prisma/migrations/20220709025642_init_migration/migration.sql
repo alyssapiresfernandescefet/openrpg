@@ -1,11 +1,13 @@
 -- CreateTable
 CREATE TABLE `Player` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `username` VARCHAR(191) NOT NULL,
-    `password` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL DEFAULT '',
+    `showName` BOOLEAN NOT NULL DEFAULT true,
+    `username` VARCHAR(191) NULL,
+    `password` VARCHAR(191) NULL,
     `maxLoad` DOUBLE NOT NULL DEFAULT 1,
     `spellSlots` DOUBLE NOT NULL DEFAULT 1,
-    `role` ENUM('PLAYER', 'ADMIN') NOT NULL,
+    `role` ENUM('PLAYER', 'NPC', 'ADMIN') NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -14,7 +16,7 @@ CREATE TABLE `Player` (
 CREATE TABLE `Info` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
-    `default` BOOLEAN NOT NULL DEFAULT false,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -25,6 +27,8 @@ CREATE TABLE `Attribute` (
     `name` VARCHAR(191) NOT NULL,
     `color` CHAR(6) NOT NULL DEFAULT '0d6efd',
     `rollable` BOOLEAN NOT NULL,
+    `portrait` ENUM('PRIMARY', 'SECONDARY') NULL,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -42,6 +46,7 @@ CREATE TABLE `AttributeStatus` (
 CREATE TABLE `Spec` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -50,6 +55,7 @@ CREATE TABLE `Spec` (
 CREATE TABLE `Characteristic` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -67,7 +73,9 @@ CREATE TABLE `Skill` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `specialization_id` INTEGER NULL,
+    `startValue` INTEGER NOT NULL DEFAULT 0,
     `mandatory` BOOLEAN NOT NULL DEFAULT false,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -101,6 +109,7 @@ CREATE TABLE `Item` (
 CREATE TABLE `Currency` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `visibleToAdmin` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -146,6 +155,7 @@ CREATE TABLE `PlayerAttribute` (
     `attribute_id` INTEGER NOT NULL,
     `value` INTEGER NOT NULL,
     `maxValue` INTEGER NOT NULL,
+    `show` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`player_id`, `attribute_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -173,7 +183,7 @@ CREATE TABLE `PlayerCharacteristic` (
     `player_id` INTEGER NOT NULL,
     `characteristic_id` INTEGER NOT NULL,
     `value` INTEGER NOT NULL,
-    `modifier` VARCHAR(191) NOT NULL,
+    `modifier` INTEGER NOT NULL DEFAULT 0,
 
     PRIMARY KEY (`player_id`, `characteristic_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -183,6 +193,8 @@ CREATE TABLE `PlayerSkill` (
     `player_id` INTEGER NOT NULL,
     `skill_id` INTEGER NOT NULL,
     `value` INTEGER NOT NULL,
+    `modifier` INTEGER NOT NULL DEFAULT 0,
+    `checked` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`player_id`, `skill_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -248,6 +260,19 @@ CREATE TABLE `PlayerAvatar` (
     `link` TEXT NULL,
 
     UNIQUE INDEX `PlayerAvatar_player_id_attribute_status_id_key`(`player_id`, `attribute_status_id`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Trade` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `sender_id` INTEGER NOT NULL,
+    `sender_object_id` INTEGER NOT NULL,
+    `receiver_id` INTEGER NOT NULL,
+    `receiver_object_id` INTEGER NULL,
+
+    UNIQUE INDEX `Trade_sender_id_key`(`sender_id`),
+    UNIQUE INDEX `Trade_receiver_id_key`(`receiver_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -334,10 +359,16 @@ ALTER TABLE `PlayerSpell` ADD CONSTRAINT `PlayerSpell_player_id_fkey` FOREIGN KE
 ALTER TABLE `PlayerSpell` ADD CONSTRAINT `PlayerSpell_spell_id_fkey` FOREIGN KEY (`spell_id`) REFERENCES `Spell`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `PlayerNote` ADD CONSTRAINT `PlayerNote_player_id_fkey` FOREIGN KEY (`player_id`) REFERENCES `Player`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `PlayerNote` ADD CONSTRAINT `PlayerNote_player_id_fkey` FOREIGN KEY (`player_id`) REFERENCES `Player`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `PlayerAvatar` ADD CONSTRAINT `PlayerAvatar_player_id_fkey` FOREIGN KEY (`player_id`) REFERENCES `Player`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `PlayerAvatar` ADD CONSTRAINT `PlayerAvatar_attribute_status_id_fkey` FOREIGN KEY (`attribute_status_id`) REFERENCES `AttributeStatus`(`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE `PlayerAvatar` ADD CONSTRAINT `PlayerAvatar_attribute_status_id_fkey` FOREIGN KEY (`attribute_status_id`) REFERENCES `AttributeStatus`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Trade` ADD CONSTRAINT `Trade_sender_id_fkey` FOREIGN KEY (`sender_id`) REFERENCES `Player`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Trade` ADD CONSTRAINT `Trade_receiver_id_fkey` FOREIGN KEY (`receiver_id`) REFERENCES `Player`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

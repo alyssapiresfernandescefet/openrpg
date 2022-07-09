@@ -1,20 +1,33 @@
 import Router from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import FormSelect from 'react-bootstrap/FormSelect';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import api from '../../utils/api';
+import _presets from '../../utils/presets.json';
+
+const presets = _presets.map((p) => ({ id: p.preset_id, name: p.preset_name }));
+
+type Preset = typeof presets[number];
 
 export default function WelcomePage() {
-	const [error, setError] = useState<Error | null>(null);
+	const [booting, setBooting] = useState(false);
+	const [error, setError] = useState(false);
+	const [selectedPreset, setSelectedPreset] = useState(presets[0]);
 
-	useEffect(() => {
+	function boot() {
+		setBooting(true);
 		api
-			.post('/init')
+			.post('/boot', { presetId: selectedPreset.id })
 			.then(() => Router.reload())
-			.catch((err) => setError(err as Error));
-	}, []);
+			.catch((err) => {
+				console.error(err);
+				setError(true);
+			});
+	}
 
 	if (error)
 		return (
@@ -34,11 +47,20 @@ export default function WelcomePage() {
 						.
 					</Col>
 				</Row>
+			</Container>
+		);
+
+	if (booting)
+		return (
+			<Container className='text-center'>
 				<Row>
-					<Col className='h4 mt-5'>
-						Descrição do erro:
-						<br />
-						{error.toString()}
+					<Col className='h1 mt-3'>
+						Aplicando as predefinições de {selectedPreset.name}...
+					</Col>
+				</Row>
+				<Row>
+					<Col className='mt-3'>
+						<Spinner animation='border' variant='secondary' />
 					</Col>
 				</Row>
 			</Container>
@@ -47,11 +69,34 @@ export default function WelcomePage() {
 	return (
 		<Container className='text-center'>
 			<Row>
-				<Col className='h1 mt-3'>Realizando configuração inicial...</Col>
+				<Col className='h1 mt-3'>Seja bem-vindo ao Open RPG!</Col>
+			</Row>
+			<Row>
+				<Col className='h4 mt-3'>
+					Para começar, selecione uma predefinição de ficha abaixo:
+				</Col>
+			</Row>
+			<Row className='justify-content-center'>
+				<Col xs={12} md={8} className='mt-3'>
+					<FormSelect
+						value={selectedPreset.id}
+						onChange={(ev) =>
+							setSelectedPreset(presets.find((p) => p.id === ev.target.value) as Preset)
+						}
+						className='theme-element'>
+						{presets.map((p) => (
+							<option key={p.id} value={p.id}>
+								{p.name}
+							</option>
+						))}
+					</FormSelect>
+				</Col>
 			</Row>
 			<Row>
 				<Col className='mt-3'>
-					<Spinner animation='border' variant='secondary' />
+					<Button variant='secondary' onClick={boot}>
+						Aplicar
+					</Button>
 				</Col>
 			</Row>
 		</Container>
